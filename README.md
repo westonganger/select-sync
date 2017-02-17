@@ -50,8 +50,8 @@ $("select[name='myArray[]']").selectSync('selected', {
 });
 
 // Remove select sync
-$('select[data-sync]').selectSync('disableSelected', 'destroy');
-$('select[data-sync]').selectSync('selected', 'destroy');
+$('select[data-sync-disable-selected]').selectSync('disableSelected', 'destroy');
+$('select[data-sync-selected]').selectSync('selected', 'destroy');
 
 
 $('#add').click(function(){
