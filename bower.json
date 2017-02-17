@@ -1,0 +1,30 @@
+{
+  "name": "select-sync",
+  "version": "0.9.0",
+  "description": "Jquery plugin to synchronize selects by selected or disabled options.",
+  "main": "dist/select-sync.min.js",
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:westonganger/select-sync.git"
+  },
+  "keywords": [
+    "select",
+    "sync",
+    "array",
+    "disabled",
+    "selected",
+    "jquery",
+    "js"
+  ],
+  "author": "Weston Ganger",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/westonganger/select-sync/issues"
+  },
+  "homepage": "https://github.com/westonganger/select-sync",
+  "dependencies": {},
+  "devDependencies": {}
+}

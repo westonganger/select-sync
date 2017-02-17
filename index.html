@@ -1,0 +1,48 @@
+<!doctype html>
+<html class="no-js" lang="">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>select-sync Test Page</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css">
+  </head>
+  <body>
+    <h1>Testing select-sync</h1>
+
+    <div style="width: 500px; margin: 20px;">
+      <select id="input1" type='text'/>
+    </div>
+
+    <div style="width: 500px; margin: 20px;">
+      <input id="input2" type='text'/>
+    </div>
+
+    <div style="width: 500px; margin: 20px;">
+      <textarea id="input3"></textarea>
+    </div>
+
+    <div style="width: 500px; margin: 20px;">
+      <input id="input4" type='text'/>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="src/select-sync.js"></script>
+    <script type="text/javascript">
+      var selector = "select[name='myArray[]']":
+
+      $(selector).selectSync({
+        syncSelected: true,
+        syncDisabled: true,
+        beforeSync: function(selects){
+          // do something if you want to 
+        },
+        afterSync: function(selects){
+          $(selects).trigger('chosen:updated');
+        }
+      });
+    </script>
+  </body>
+</html>
