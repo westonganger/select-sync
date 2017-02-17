@@ -8,8 +8,6 @@
 (function($){
   "use strict";
 
-  var event = 'change';
-
   var isFunction = function(obj){
     return !!(obj && obj.constructor && obj.call && obj.apply)
   };
@@ -45,32 +43,26 @@
     var syncDisableSelected = function(e){
       elements.find('option').removeAttr('disabled');
 
-      elements.each(function(){
+      elements.each(function(i, item){
         if(item.value){
-          // will this work?
           elements.find('option:not(:selected)[value='+ item.value +']').prop('disabled', true);
         }
       });
     };
 
-    var syncSelected = function(){
-      elements.each(function(){
-        if(item.value){
-          $(this).val();
-          return false;
-        }
-      });
+    var syncSelected = function(e){
+      elements.val($(e.target).val());
     };
 
-    var sync = function(){
+    var sync = function(e){
       if(options.beforeSync){
         options.beforeSync(elements);
       }
 
-      if(type === 'disabledSelected'){
-        syncDisableSelected();
+      if(e.type === 'sync:disable-selected'){
+        syncDisableSelected(e);
       }else{
-        syncSelected();
+        syncSelected(e);
       }
 
       if(options.afterSync){
@@ -81,11 +73,11 @@
     elements.data("sync-"+ev, true)
             .off('sync:'+ev)
             .on('sync:'+ev, function(e){
-              func();
+              sync(e);
             })
             .off('change.sync-'+ev)
             .on('change.sync-'+ev, function(e){
-              $(this).trigger('sync:'+ev)
+              $(this).trigger('sync:'+ev);
             });
 
     elements.first().trigger('sync:'+ev);

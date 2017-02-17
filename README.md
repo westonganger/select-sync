@@ -52,6 +52,21 @@ $("select[name='myArray[]']").selectSync('selected', {
 // Remove select sync
 $('select[data-sync]').selectSync('disableSelected', 'destroy');
 $('select[data-sync]').selectSync('selected', 'destroy');
+
+
+$('#add').click(function(){
+  // add new selects
+
+  //reinitialize sync to include new selects
+  $("select[name='myArray[]']").selectSync('disableSelected', {
+    beforeSync: function(selects){
+      // do something if you want to 
+    },
+    afterSync: function(selects){
+      $(selects).trigger('chosen:updated');
+    }
+  });
+});
 ```
 
 # Options
