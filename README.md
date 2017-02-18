@@ -69,18 +69,10 @@ $('#add').click(function(){
 });
 ```
 
-# Options
-
-beforeSync: function - Default `false`
-Function to call before the sync has started.
-
-afterSync: function - Default `false`
-Function to call after the sync has completed.
-
 # Limitations
 
 * Currently can only have one sync per type per select.
-* Doesnt work for multi-selects. I would try using a chosen multi-select before resorting to using this plugin.
+* Doesnt work for multi-selects. They try to solve the same issue as this plugin. I would try using a chosen multi-select before resorting to using this plugin.
 
 # Credits
 Created by Weston Ganger - @westonganger
