@@ -32,6 +32,7 @@ end
 # Usage
 ```javascript
 $("select[name='myArray[]']").selectSync('disableSelected', {
+  alwaysDisabledValues: [], // if you have some option values that should always stay disabled
   beforeSync: function(selects){
     // do something if you want to 
   },
@@ -59,6 +60,7 @@ $('#add').click(function(){
 
   //reinitialize sync to include new selects
   $("select[name='myArray[]']").selectSync('disableSelected', {
+    alwaysDisabledValues: [], // if you have some option values that should always stay disabled
     beforeSync: function(selects){
       // do something if you want to 
     },

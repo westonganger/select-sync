@@ -8,6 +8,17 @@
 (function($){
   "use strict";
 
+  var arrayExcludes = function(array, value){
+    var bool = true;
+    for(var i=0;i<array.length;i++){
+      if(array[i] === x){
+        bool = false;
+        break;
+      }
+    }
+    return bool;
+  };
+
   var isFunction = function(obj){
     return !!(obj && obj.constructor && obj.call && obj.apply)
   };
@@ -32,16 +43,34 @@
 
     var elements = this.not('[multiple]');
 
-    if(!isFunction(options.beforeSync)){
-      options.beforeSync = false;
+    if(options.beforeSync && !isFunction(options.beforeSync)){
+      throw('afterSync option must be a function');
     }
 
-    if(!isFunction(options.afterSync)){
-      options.afterSync = false;
+    if(options.afterSync && !isFunction(options.afterSync)){
+      throw('afterSync option must be a function');
+    }
+
+    if(options.alwaysDisabledValues){
+      if(ev === 'selected'){
+        throw('alwaysDisabledValues option is only valid for the sync type: disableSelected');
+      }else if(!Array.isArray(options.alwaysDisabledValues)){
+        throw('alwaysDisabledValues option must be an array');
+      }
     }
 
     var syncDisableSelected = function(e){
-      elements.find('option').removeAttr('disabled');
+      if(options.alwaysDisabledValues){
+        elements.find('option').map(function(i, item){
+          if(Array.prototype.includes){
+            return !options.alwaysDisabledValues.includes(item.value);
+          }else{
+            return arrayExcludes(options.alwaysDisabledValues, item.value);
+          }
+        }).removeAttr('disabled');
+      }else{
+        elements.find('option').removeAttr('disabled');
+      }
 
       elements.each(function(i, item){
         if(item.value){
