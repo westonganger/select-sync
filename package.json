@@ -1,7 +1,7 @@
 {
   "name": "select-sync",
-  "version": "1.0.0",
-  "description": "Jquery plugin to synchronize selects by selected or disabled options.",
+  "version": "1.0.1",
+  "description": "Synchronize selects by selected or disabled options.",
   "main": "dist/select-sync.min.js",
   "directories": {
     "test": "test"
@@ -17,6 +17,7 @@
     "disabled",
     "selected",
     "jquery",
+    "zepto",
     "js"
   ],
   "author": "Weston Ganger",
@@ -26,7 +27,6 @@
   },
   "homepage": "https://github.com/westonganger/select-sync",
   "dependencies": {
-    "jquery": ">=1.0"
   },
   "devDependencies": {
     "gulp": "*",

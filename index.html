@@ -8,39 +8,92 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css">
+
+    <style>
+      body{
+        padding: 20px 40px;
+      }
+
+      select{
+        width: 200px;
+        margin-top: 20px;
+        display: block;
+      }
+    </style>
   </head>
+
   <body>
     <h1>Testing select-sync</h1>
 
-    <div style="width: 500px; margin: 20px;">
-      <select id="input1" type='text'/>
-    </div>
 
-    <div style="width: 500px; margin: 20px;">
-      <input id="input2" type='text'/>
-    </div>
+    <h3>Disable Selected</h3>
 
-    <div style="width: 500px; margin: 20px;">
-      <textarea id="input3"></textarea>
-    </div>
+    <select class="sync-disable-selected">
+      <option></option>
+      <option>Option 1</option>
+      <option>Option 2</option>
+      <option>Option 3</option>
+    </select>
 
-    <div style="width: 500px; margin: 20px;">
-      <input id="input4" type='text'/>
-    </div>
+    <select class="sync-disable-selected">
+      <option></option>
+      <option>Option 1</option>
+      <option>Option 2</option>
+      <option>Option 3</option>
+    </select>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <select class="sync-disable-selected">
+      <option></option>
+      <option>Option 1</option>
+      <option>Option 2</option>
+      <option>Option 3</option>
+    </select>
+
+    <h3>Sync Selected</h3>
+
+    <select class="sync-selected">
+      <option></option>
+      <option>Option 1</option>
+      <option>Option 2</option>
+      <option>Option 3</option>
+    </select>
+
+    <select class="sync-selected">
+      <option></option>
+      <option>Option 1</option>
+      <option>Option 2</option>
+      <option>Option 3</option>
+    </select>
+
+    <select class="sync-selected">
+      <option></option>
+      <option>Option 1</option>
+      <option>Option 2</option>
+      <option>Option 3</option>
+    </select>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <!--
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/zepto/1.2.0/zepto.min.js"></script>
+    -->
     <script src="src/select-sync.js"></script>
-    <script type="text/javascript">
-      var selector = "select[name='myArray[]']":
 
-      $(selector).selectSync({
-        syncSelected: true,
-        syncDisabled: true,
+    <script type="text/javascript">
+      $('select.sync-disable-selected').selectSync('disableSelected', {
         beforeSync: function(selects){
-          // do something if you want to 
+          console.log('beforeSync');
         },
         afterSync: function(selects){
-          $(selects).trigger('chosen:updated');
+          console.log('afterSync');
+        }
+      });
+
+      $('select.sync-selected').selectSync('selected', {
+        beforeSync: function(selects){
+          console.log('beforeSync');
+        },
+        afterSync: function(selects){
+          console.log('afterSync');
         }
       });
     </script>

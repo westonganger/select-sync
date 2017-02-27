@@ -1,6 +1,6 @@
 /*
- * select-sync - jQuery plugin to synchronize selects by selected, disabled or all options.
- * @version v0.9.0
+ * select-sync - Synchronize selects by selected, disabled or all options.
+ * @version v1.0.1
  * @link http://github.com/westonganger/select-sync
  * @license MIT
  */
@@ -73,8 +73,13 @@
       }
 
       elements.each(function(i, item){
-        if(item.value){
-          elements.find('option:not(:selected)[value='+ item.value +']').prop('disabled', true);
+        var val = $(item).val();
+        if(val){
+          elements.find("option:not(:selected)").each(function(i2, opt){
+            if((opt.value === undefined && opt.text === val) || (opt.value && opt.value === val)){
+              $(opt).prop('disabled', true);
+            }
+          });
         }
       });
     };

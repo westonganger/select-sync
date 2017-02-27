@@ -1,7 +1,9 @@
 # select-sync
 <a href='https://ko-fi.com/A5071NK' target='_blank'><img height='32' style='border:0px;height:32px;' src='https://az743702.vo.msecnd.net/cdn/kofi1.png?v=a' border='0' alt='Buy Me a Coffee' /></a> 
 
-`select-sync` is a Jquery plugin to synchronize selects by selected or disabled options. Works great for many selects which are for an array or multiple selects for one value.
+`select-sync` is a plugin to synchronize selects by selected or disabled options. Works great for many selects which are for an array or multiple selects for one value.
+
+Requires a DOM library such as jQuery, Zepto, or any other $ library.
 
 # Install
 
